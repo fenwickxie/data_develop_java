@@ -1,0 +1,28 @@
+# Exclude VCS
+.git
+.gitignore
+
+# Node/Yarn
+frontend/node_modules
+frontend/dist
+frontend/npm-debug.log*
+frontend/yarn-error.log
+
+# Python
+offline_tool/.venv
+offline_tool/__pycache__
+*.pyc
+
+# Maven
+backend/target
+backend/.mvn
+
+# IDE
+.vscode
+.idea
+*.iml
+
+# Misc
+*.log
+*.tmp
+*.swp

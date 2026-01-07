@@ -1,0 +1,6 @@
+# Copy to config.yaml and adjust per environment
+base_url: "http://localhost:8080"
+auth_token: "replace-with-jwt"
+download_dir: "./downloads"
+metrics_dir: "./metrics"
+timeout_seconds: 15

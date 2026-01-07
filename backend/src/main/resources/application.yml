@@ -1,0 +1,62 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /
+
+spring:
+  application:
+    name: data-platform-api
+  datasource:
+    # Raw DB
+    raw:
+      url: jdbc:postgresql://localhost:5432/raw_db
+      username: raw_user
+      password: raw_pass
+      driver-class-name: org.postgresql.Driver
+    # Metrics DB
+    metrics:
+      url: jdbc:postgresql://localhost:5433/metrics_db
+      username: metrics_user
+      password: metrics_pass
+      driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: none
+    open-in-view: false
+    properties:
+      hibernate.format_sql: true
+      hibernate.jdbc.time_zone: UTC
+
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui
+
+logging:
+  level:
+    root: INFO
+    org.springframework.security: INFO
+    AUDIT: INFO
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+  file:
+    name: logs/audit.log
+
+security:
+  jwt:
+    secret: change-me-please
+    expiration-ms: 86400000
+  demo-user:
+    username: admin
+    password: admin123
+
+storage:
+  ocy:
+    base-url: https://ocy.example.com
+    expiration-seconds: 900
+    namespace: ${OCI_NAMESPACE:your-namespace}
+    region: ${OCI_REGION:us-ashburn-1}
+    config-file: ${OCI_CONFIG_FILE:~/.oci/config}
+    profile: ${OCI_PROFILE:DEFAULT}
+    bucket-name: ${OCI_BUCKET:data-platform-bucket}

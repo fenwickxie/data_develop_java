@@ -1,0 +1,58 @@
+spring:
+  application:
+    name: data-platform-api
+  profiles:
+    active: local
+
+---
+spring:
+  config:
+    activate:
+      on-profile: local
+  datasource:
+    raw:
+      url: jdbc:postgresql://localhost:5432/raw_db
+      username: raw_user
+      password: raw_pass
+      driver-class-name: org.postgresql.Driver
+    metrics:
+      url: jdbc:postgresql://localhost:5433/metrics_db
+      username: metrics_user
+      password: metrics_pass
+      driver-class-name: org.postgresql.Driver
+
+security:
+  jwt:
+    secret: local-dev-secret
+    expiration-ms: 86400000
+  demo-user:
+    username: admin
+    password: admin123
+
+storage:
+  ocy:
+    base-url: https://ocy.example.com
+    expiration-seconds: 900
+    namespace: local-namespace
+    region: us-ashburn-1
+    bucket-name: local-test-bucket
+
+logging:
+  level:
+    root: INFO
+    com.example.dataplatform: DEBUG
+
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+  datasource:
+    raw:
+      url: jdbc:postgresql://pg-raw:5432/raw_db
+    metrics:
+      url: jdbc:postgresql://pg-metrics:5432/metrics_db
+
+logging:
+  level:
+    root: INFO

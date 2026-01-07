@@ -1,0 +1,36 @@
+spring:
+  application:
+    name: data-platform-api-test
+  datasource:
+    raw:
+      url: jdbc:postgresql://localhost:5432/raw_db_test
+      username: raw_user
+      password: raw_pass
+      driver-class-name: org.postgresql.Driver
+    metrics:
+      url: jdbc:postgresql://localhost:5433/metrics_db_test
+      username: metrics_user
+      password: metrics_pass
+      driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+
+security:
+  jwt:
+    secret: test-secret-key-for-unit-tests
+    expiration-ms: 3600000
+
+storage:
+  ocy:
+    base-url: https://test.ocy.example.com
+    expiration-seconds: 600
+    namespace: test-namespace
+    region: us-test-1
+    bucket-name: test-bucket
+
+logging:
+  level:
+    root: INFO
+    com.example.dataplatform: DEBUG
